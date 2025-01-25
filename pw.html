@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* Container */
+.container {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    width: 100%;
+    padding: 30px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.navbar.sticky {
+    padding: 15px 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 4px 2px -2px gray;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo a {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.navbar .logo a span {
+    color: rgb(46, 170, 219);
+}
+
+.navbar .section {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .section li {
+    list-style: none;
+    display: inline-block;
+}
+
+.navbar .section li a {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3s ease;
+}
+
+.navbar .section li a:hover {
+    color: rgb(46, 170, 219);
+}
+
+.sec-btn {
+    display: none;
+    color: #fff;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+/* Active class for mobile menu */
+.section.active {
+    display: block !important;
+}
+
+/* Home Section Styles */
+.home {
+    display: flex;
+    background: url('titlepic.png') no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    color: #fff;
+    min-height: 500px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home .container {
+    margin: auto 0 auto 40px;
+}
+
+.home .home-sec .text-1 {
+    font-size: 30px;
+}
+
+.home .home-sec .text-2 {
+    font-size: 65px;
+    font-weight: 500;
+    margin-left: -3px;
+}
+
+.home .home-sec .text-3 {
+    font-size: 40px;
+    margin: 5px 0;
+}
+
+.home .home-sec .text-3 span {
+    color: rgb(46, 170, 219);
+    font-weight: 500;
+}
+
+.home .home-sec a {
+    display: inline-block;
+    background: rgb(46, 170, 219);
+    color: white;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 8px 16px;
+    border: 2px solid rgb(14, 14, 87);
+    transition: all 0.3s ease;
+}
+
+.home .home-sec a:hover {
+    background: none;
+    color: #fff;
+}
+
+/* Section Styles */
+section {
+    padding: 100px 0;
+}
+
+/* About Section */
+.about {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.about .title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'ubuntu', sans-serif;
+    color: #fff;
+}
+
+.about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about .about-content .left {
+    width: 45%;
+}
+
+.about .about-content .left img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.about .about-content .right {
+    width: 55%;
+}
+
+.about .about-content .right .text {
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.about .about-content .right .text span {
+    color: rgb(46, 170, 219);
+}
+
+.about .about-content .right p {
+    text-align: justify;
+}
+
+.about .about-content .right a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgb(46, 170, 219);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 18px;
+    border: 2px solid rgb(46, 170, 219);
+    transition: all 0.3s ease;
+}
+
+.about .about-content .right a:hover {
+    background: none;
+    color: #fff;
+}
+
+/* Skills Section */
+.skills {
+    padding: 60px 0;
+    background-color: black; /* Dark background color */
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff; /* Light text color */
+}
+
+/* Flexbox setup for the skills content */
+.skills-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between skill items */
+    justify-content: center; /* Center the items */
+}
+
+/* Styling for each skill item */
+.skill-item {
+    flex: 1 1 calc(33.333% - 20px); /* 3 items per row */
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.skill-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hover effect */
+}
+
+.skill-name {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333; /* Dark text color */
+}
+
+/* Styling for the progress bar */
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 20px;
+    position: relative;
+}
+
+.progress {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2); /* Gradient color */
+    color: #fff;
+    height: 100%;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 20px; /* Center text vertically */
+    font-size: 0.9em;
+    position: relative;
+    transition: width 0.3s ease; /* Smooth transition */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .skill-item {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-item {
+        flex: 1 1 100%; /* 1 item per row on mobile */
+    }
+}
+
+/* Services Section */
+.services {
+    padding: 60px 0;
+    background-color: black; /* Dark background color */
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+/* Flexbox setup for the services */
+.services-content {
+    display: flex;
+    justify-content: space-between; /* Space out the items evenly */
+    gap: 20px; /* Optional: Adjust the spacing between items */
+    flex-wrap: wrap; /* Allows items to wrap to a new line if needed */
+}
+
+.card {
+    flex: 1 1 calc(33.333% - 20px); /* 3 items per row with spacing */
+    box-sizing: border-box;
+    background-color: rgb(46, 170, 219);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+.box {
+    margin-bottom: 15px;
+}
+
+.fas, .fab {
+    font-size: 2em;
+    color: #fff; /* Color of the icons */
+}
+
+.text {
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+p {
+    font-size: 1em;
+    color: #fff;
+}
+
+/* Contact Section */
+/* Contact Section */
+.contact {
+            background-color:black;
+            color:white;
+            padding: 100px 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .contact .title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+        .contact .contact-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .contact .contact-content .left {
+            width: 45%;
+        }
+        .contact .contact-content .right {
+            width: 50%;
+        }
+        .contact .contact-content .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact .contact-content .contact-form input,
+        .contact .contact-content .contact-form textarea {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #333;
+            color: #fff;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .contact .contact-content .contact-form textarea {
+            resize: none;
+        }
+        .contact .contact-content .contact-form input[type="submit"] {
+            background: rgb(46, 170, 219);
+            border: 2px solid rgb(46, 170, 219);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .contact .contact-content .contact-form input[type="submit"]:hover {
+            background: none;
+            color: #fff;
+        }
+
+/* Footer */
+/* Footer Styles */
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-logo a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-logo a span {
+    color: rgb(46, 170, 219);
+}
+
+.footer-info {
+    font-size: 14px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.footer-info a {
+    color: rgb(46, 170, 219);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+    color: #fff;
+}
+
+.social-media {
+    margin-top: 10px;
+}
+
+.social-media a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: rgb(46, 170, 219);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-info {
+        margin-top: 10px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .section {
+        display: none;
+    }
+
+    .sec-btn {
+        display: inline-block;
+    }
+
+    .navbar .section.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0px 4px 2px -2px gray;
+    }
+
+    .navbar .section.active li {
+        display: block;
+        margin: 15px 0;
+    }
+
+    .navbar .section.active li a {
+        font-size: 20px;
+    }
+
+    .about .about-content .left, 
+    .about .about-content .right, 
+    .contact .contact-content .info, 
+    .contact .contact-content .form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .home .home-sec .text-2 {
+        font-size: 50px;
+    }
+
+    .home .home-sec .text-3 {
+        font-size: 30px;
+    }
+    
+    .contact .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact .contact-content .info, 
+    .contact .contact-content .form {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#">My<span>Portfolio</span></a>
+            </div>
+            <ul class="section">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="sec-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="container">
+            <div class="home-sec">
+                <h1 class="text-1">Hello, I'm</h1>
+                <h2 class="text-2">Alisha Ramzan</h2>
+                <h3 class="text-3">A <span>Frontend Developer</span></h3>
+                <a href="#contact">Hire Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="title">About Me</div>
+            <div class="about-content">
+                <div class="left">
+                    <img src="hijab_pic-removebg-preview.png" alt="About Image">
+                </div>
+                <div class="right">
+                    <div class="text"><h2>I am Alisha Ramzan and I'm a <span>Web Developer</span></h2></div>
+                    <h2>Education</h2>
+                    <p>Bachelor in Information Technology (BSIT) from University of Education Lahore</p>
+                    <h2>Frontend Developer</h2>
+                    <p>As a Frontend Developer, I have worked on a variety of projects, focusing on building and enhancing user interfaces to deliver seamless and engaging experiences. I have applied my expertise in HTML, CSS, and JavaScript to craft visually appealing and highly functional websites. My experience with responsive design ensures that these websites look and perform beautifully across all devices, from desktops to mobile phones.</p>
+                    <h2>WordPress Developer</h2>
+                    <p>As a skilled WordPress developer specializing in Elementor, I create highly customizable and user-friendly websites tailored to meet my clients' unique needs. Leveraging Elementor’s drag-and-drop interface and visual builder, I design responsive websites that look great on any device, from desktops to smartphones. My focus is on delivering performance-driven and SEO-optimized sites that load quickly and rank well on search engines.</p>
+                    <a href="#contact">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="title">Skills</h2>
+            <div class="skills-content">
+                <div class="skill-item">
+                    <div class="skill-name">HTML</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">CSS</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;">80%</div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Java</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Wordpress</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 50%;">70%</div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">OOP</div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;">70%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="title">My Services</h2>
+            <div class="services-content">
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-paint-brush"></i>
+                        <div class="text">Web Design</div>
+                        <p>Web design services tailored to meet the unique needs of your business. With expertise in creating visually appealing and highly functional websites.</p>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <i class="fab fa-wordpress"></i> <!-- Icon for WordPress Development -->
+                        <div class="text">WordPress Development</div>
+                        <p>I offer WordPress development services tailored to your business needs. With expertise in creating custom themes and plugins.</p>
+                </div>
+                
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <i class="fas fa-code"></i> <!-- Icon for Website Development -->
+                        <div class="text">Website Development</div>
+                        <p>Offering professional website development services, I build robust and scalable websites tailored to your business goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="title">Contact Me</div>
+            <div class="contact-content">
+                <div class="left">
+                    <h4>Get in Touch</h4>
+                    <p>I’d love to hear from you!
+
+                        Whether you have a question about my services, want to discuss a potential project, or just want to say hello, feel free to reach out. I'm here to help and would be happy to connect.</p>
+                    <p><i class="fas fa-envelope"></i>alisharamzan89@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> +923157256894</p>
+                </div>
+                <div class="right">
+                    <form class="contact-form" action="your-server-endpoint" method="post">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <input type="submit" value="Send Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <a href="#">My<span>Portfolio</span></a>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2024 Alisha Ramzan. All rights reserved.</p>
+                <p><a href="mailto:alisharamzan89@gmail.com">alisharamzan89@gmail.com</a></p>
+                <p><a href="tel:+923157256894">+92 315 725 6894</a></p>
+                <div class="social-media">
+                    <a href="linkedin.com/in/alisharamzan" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- JavaScript -->
+    <script>
+        const navbar = document.querySelector(".navbar");
+        window.onscroll = () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        const secBtn = document.querySelector(".sec-btn");
+        const section = document.querySelector(".section");
+        secBtn.onclick = () => {
+            section.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+
